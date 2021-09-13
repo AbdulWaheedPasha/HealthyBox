@@ -1,0 +1,118 @@
+<?php
+    session_start();
+    error_reporting(0);
+    ini_set('display_errors', 0);
+    if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
+    require_once('../lang/' . $_SESSION['lang'] . '.php');
+    if(isset($_POST)){
+        //print_r($_POST);
+        if (isset($_POST['user_id'])){
+            require_once('../lang/'.$_SESSION['lang'].'.php');
+            require_once("../Controller/HoldController.php");
+            require_once("../Controller/AdminstratorController.php");
+            require_once("../Controller/ProgramController.php");
+            require_once("../Configuration/db.php");
+            require_once("../Model/ProgramModel.php");
+            require_once("../Controller/DayController.php");
+            require_once("../Model/ProgramDayModel.php");
+            $user_id = $_POST['user_id'];
+            $date_model = new program_model();
+            $controller = new hold_controller($con);
+            $adminstrator_controller = new adminstrator_controller($con);
+            $program_controller      = new program_controller($date_model,$con);
+            $program_day             = new program_day_model();
+            $day_controller          = new day_controller($program_day, $con);
+            
+            $adminstrator_controller->update_status_user(1,$user_id);
+
+            $user_area_id = $_POST['user_area_id'];
+
+            $hold_date       = date("Y-m-d");
+            $num_days_arr    = $controller->get_hold_program($user_area_id);
+           // $num_arr_int     = $num_days_arr['hold_date_num_days'];
+            $last_renew_date =  $controller->get_last_renew_date($user_area_id);
+
+            if($hold_date >  $last_renew_date){
+                //echo "Currnt date ";
+                $date_model->start_date = date("Y-m-d");
+            }else{
+               // echo "greater than date $last_renew_date ";
+                $date_model->start_date = $last_renew_date;
+            }
+            $program_start_end = "";
+
+            $num_day_sql = "SELECT `program_start_end` FROM `program_start_end_date_tbl` WHERE  `user_area_id` =  '$user_area_id' ";
+            // echo $last_end_date."<br/>";
+             if ($num_day_result = mysqli_query($con, $num_day_sql)) {
+               // Fetch one and one row
+               while ($num_day_row = mysqli_fetch_row($num_day_result)) {
+                   $program_start_end  = $num_day_row[0];
+               }
+               //mysqli_free_result($result);
+             } 
+
+
+
+            $date_model->end_date   = $program_start_end;
+           // echo "End Date : ".$date_model->end_date."<br/>";;
+            $date_model->user_id    = $user_id;
+            $date_model->program_id = $program_controller->reactive_program($user_area_id,$num_days_arr['hold_date_id']);
+            $program_controller->insert_program_date();
+            $day_array =  array();
+            $z = 0;
+            // select days without friday and starday
+            // $startTime = strtotime($date_model->start_date);
+            // $endTime   = strtotime($date_model->end_date);
+  
+            $day_array =  array();
+            $z = 0;
+            // select days without friday and starday
+            $startTime = strtotime($date_model->start_date);
+            $endTime   = strtotime($date_model->end_date);
+            //echo "End date :".$date_model->end_date;
+            for ($i = $startTime;$i<=$endTime; $i = $i + 86400 ) {
+              $timestamp = strtotime(date('Y-m-d',$i));
+              $day = date('D', $timestamp);
+              $arr = array('Thu'); // get out from week stauday and friday 
+              if(!in_array($day,$arr)) {
+                 // echo  $day."<br/>";
+                 $day_array[$z++] = $day."_".date('Y-m-d 00:00:00',$i); // add all days inside array 
+              }
+          }
+
+          //print_r($day_array);
+          $last_start_end_date = $program_controller->last_id_inserted_date_time();
+
+          $result = false;
+          // leave two day from array for reset
+          for($counter = 0 ;$counter <count($day_array);$counter++){
+             $day_name = explode("_",$day_array[$counter]);
+           // print_r($day_name);
+             $program_day->day_en      = $day_name[0]; //english day 
+             $program_day->day_ar      = $day_name[0]; //english day 
+             $program_day->date        = $day_name[1]; //date  
+             $program_day->program_id  = $last_start_end_date['max']; // last id from start and end date 
+             // insert days for program 
+             $result = $day_controller->insert_day_time_table();
+         }
+
+         $myObj->result  = "1";
+         $myObj->message = $languages['cap_page']['active_user'];
+         $myJSON         = json_encode($myObj);
+         echo  $myJSON;
+         
+        }else{
+            $myObj->result  = "2";
+            $myObj->message = $languages['cap_page']['active_error'];
+            $myJSON = json_encode($myObj);
+            echo  $myJSON;
+        }
+        
+    }else{
+        $myObj->result  = "2";
+        $myObj->message = $languages['cap_page']['active_error'];
+        $myJSON = json_encode($myObj);
+        echo  $myJSON;
+    }
+}
+?>

@@ -1,0 +1,50 @@
+[26-Aug-2020 02:16:43 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 02:16:46 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 02:32:51 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 02:32:56 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 02:37:21 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 02:51:15 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 02:51:52 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 02:52:07 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 02:52:48 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 02:53:46 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 03:12:40 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 03:12:42 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 03:23:12 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[26-Aug-2020 03:50:41 Asia/Manila] PHP Notice:  Undefined property: stdClass::$product_info in /home2/aljabriy/public_html/webservices/api/AddOrder.php on line 49
+[24-Feb-2021 10:14:04 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[24-Feb-2021 10:14:04 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php70/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[11-Mar-2021 10:45:27 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[11-Mar-2021 10:45:27 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[15-Mar-2021 12:27:05 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[15-Mar-2021 12:27:05 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[15-Mar-2021 12:27:22 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[15-Mar-2021 12:27:22 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[15-Mar-2021 12:27:44 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[15-Mar-2021 12:27:44 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[16-Mar-2021 10:55:00 America/Boise] PHP Parse error:  syntax error, unexpected ']' in /home3/althybq7/public_html/webservices/api/ChangePassword.php on line 71
+[16-Mar-2021 10:55:06 America/Boise] PHP Parse error:  syntax error, unexpected ']' in /home3/althybq7/public_html/webservices/api/ChangePassword.php on line 71
+[16-Mar-2021 11:05:12 America/Boise] PHP Parse error:  syntax error, unexpected ']' in /home3/althybq7/public_html/webservices/api/ChangePassword.php on line 71
+[16-Mar-2021 11:13:21 America/Boise] PHP Parse error:  syntax error, unexpected ']' in /home3/althybq7/public_html/webservices/api/ChangePassword.php on line 71
+[16-Mar-2021 11:15:51 America/Boise] PHP Parse error:  syntax error, unexpected ']' in /home3/althybq7/public_html/webservices/api/ChangePassword.php on line 71
+[16-Mar-2021 11:19:37 America/Boise] PHP Parse error:  syntax error, unexpected ']' in /home3/althybq7/public_html/webservices/api/ChangePassword.php on line 71
+[16-Mar-2021 11:32:10 America/Boise] PHP Parse error:  syntax error, unexpected ']' in /home3/althybq7/public_html/webservices/api/ChangePassword.php on line 71
+[16-Mar-2021 11:32:32 America/Boise] PHP Parse error:  syntax error, unexpected ']' in /home3/althybq7/public_html/webservices/api/ChangePassword.php on line 71
+[16-Mar-2021 11:32:56 America/Boise] PHP Parse error:  syntax error, unexpected ']' in /home3/althybq7/public_html/webservices/api/ChangePassword.php on line 71
+[17-Mar-2021 12:19:39 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[17-Mar-2021 12:19:39 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[26-Mar-2021 12:17:00 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[26-Mar-2021 12:17:00 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[27-Mar-2021 11:37:15 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[27-Mar-2021 11:37:15 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[03-Apr-2021 11:43:44 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[03-Apr-2021 11:43:44 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[03-Apr-2021 12:35:37 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[03-Apr-2021 12:35:37 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[17-Apr-2021 09:44:39 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[17-Apr-2021 09:44:39 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[17-Apr-2021 09:45:13 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[17-Apr-2021 09:45:13 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[24-Apr-2021 12:26:30 America/Boise] PHP Warning:  include_once(../config/core.php): failed to open stream: No such file or directory in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[24-Apr-2021 12:26:30 America/Boise] PHP Warning:  include_once(): Failed opening '../config/core.php' for inclusion (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home3/althybq7/public_html/webservices/api/ClearToken.php on line 13
+[06-May-2021 11:29:50 Asia/kuwait] PHP Warning:  getimagesize(): Filename cannot be empty in /home3/althybq7/public_html/webservices/api/upload_images.php on line 33
