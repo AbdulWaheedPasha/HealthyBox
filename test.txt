@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^test.healthyboxq8.com/
+RewriteRule (.*) http://test.healthyboxq8.com/$1 [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^test\.healthyboxq8\.com$
+RewriteCond %{REQUEST_URI} !^/HealthyBox/
+RewriteRule (.*) /HealthyBox/$1

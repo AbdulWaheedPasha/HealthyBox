@@ -1,8 +1,8 @@
 <?php
 class Database{
     private $servername     = "localhost";
-		private $username   =  "althybq7__user";
-		private $password   =  '&tETKQ1U4MoK';
+		private $username   =  "root";
+		private $password   =  'tahir@msrit';
 		private $dbname     =  'althybq7_healthy_box_2';
      // DB Connect
     public function connect() {
