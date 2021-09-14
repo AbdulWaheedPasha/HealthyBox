@@ -74,7 +74,7 @@ if (count($order_program_arr) > 0) {
 
                 echo '<tr><td class="sorting_1" >' . $user_name["name"] . '</td>
                                      <td class="sorting_1" >' . $user_name["telep"] . '</td>
-                                      <td class="sorting_1" >' . $driver_name["name"]. '</td>
+                                      <td class="sorting_1" >' . $driver_name. '</td>
                                       <td class="sorting_1" >' . $area_name. '</td>
                                       <td class="sorting_1" >' . $arr['user_area_block'] . '</td>
                                       <td class="sorting_1" >' . $arr['user_area_street'] . '</td>
