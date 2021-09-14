@@ -69,7 +69,8 @@ if (count($order_program_arr) > 0) {
               //  print_r();
                 $arr             = $day_controller->get_address_where_program_id($order_program_arr[$i]['user_area_id']);
                 $driver_name     = $controller->get_driver_name_where_area_id($order_program_arr[$i]['area_id']);
-                echo "driver_name $driver_name <br/>";
+                // echo "driver_name $driver_name <br/>";
+                echo '<pre>'; print_r($driver_name); echo '</pre>';
                 $user_name       = $controller->get_user_info_where_id($order_program_arr[$i]['user_area_id']);
                 $area_name = ($_SESSION['lang'] == "en") ? $order_program_arr[$i]['area_name_eng'] : $order_program_arr[$i]['area_name_ar'];
 
