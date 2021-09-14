@@ -1,5 +1,7 @@
 <!-- order_today -->
 <?php
+phpinfo();
+error_reporting(0);
 if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
 
 //get_today_orders
