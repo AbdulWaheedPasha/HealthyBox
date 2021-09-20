@@ -46,12 +46,12 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
     require_once("./Controller/DayController.php");
     require_once("./Model/AddressModel.php");
     $address_model1 = new address_model();
-    $controller      = new day_controller($address_model1, $con);
+    $controller2      = new day_controller($address_model1, $con);
     $user_area_id = "";
     if (count($fetch_program) > 0) {
       $user_area_id =  $fetch_program[0]['user_area_id'];
     }
-    $area            = $controller->get_address_where_program_id($user_area_id);
+    $area            = $controller2->get_address_where_program_id($user_area_id);
     $area_type            = ($_SESSION['lang'] == "en") ? $area['area_name_eng'] : $area['area_name_ar'];
     $area_place_name      = ($_SESSION['lang'] == "en") ? $area['place_type_eng'] : $area['place_type_ar'];
     # Get the Address  END 
