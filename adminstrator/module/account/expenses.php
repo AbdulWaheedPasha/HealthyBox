@@ -39,12 +39,12 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
                                     <p>
 
                                         <div class="form-group">
-                                            <label><?php echo $languages['payment_table']['to'];    ?> : </label>
+                                            <label><?php echo $languages['payment_table']['from'];    ?> :</label>
                                             <input class="form-control" type="date" name="fromDate" value="" id="fromDate">
                                             <p class="help-block"></p>
                                         </div>
                                         <div class="form-group">
-                                            <label><?php echo $languages['payment_table']['from'];    ?> :</label>
+                                            <label><?php echo $languages['payment_table']['to'];    ?> : </label>
                                             <input class="form-control" name="toDate" type="date" value="" id="toDate">
                                             <p class="help-block"></p>
                                         </div>

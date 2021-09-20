@@ -28,6 +28,7 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
 
   if (isset($_GET['id'])) {
     $id = base64_decode($_GET['id']);
+    
     require_once("./Controller/ProgramController.php");
     require_once("./Model/ProgramModel.php");
     include_once('./lang/' . $_SESSION['lang'] . '.php');
@@ -36,6 +37,25 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
     $controller->user_id =   $id;
     $fetch_program = $controller->get_all_program();
 
+    
+    // echo $fetch_program[0]['user_area_id'];
+
+    # Get the Address START 
+    require_once './Configuration/db.php';
+    include_once('./lang/' . $_SESSION['lang'] . '.php');
+    require_once("./Controller/DayController.php");
+    require_once("./Model/AddressModel.php");
+    $address_model1 = new address_model();
+    $controller      = new day_controller($address_model1, $con);
+    $user_area_id = "";
+    if (count($fetch_program) > 0) {
+      $user_area_id =  $fetch_program[0]['user_area_id'];
+    }
+    $area            = $controller->get_address_where_program_id($user_area_id);
+    $area_type            = ($_SESSION['lang'] == "en") ? $area['area_name_eng'] : $area['area_name_ar'];
+    $area_place_name      = ($_SESSION['lang'] == "en") ? $area['place_type_eng'] : $area['place_type_ar'];
+    # Get the Address  END 
+
 
     $user_sql = " SELECT  DISTINCT admin.`administration_id` ,
                 (SELECT `administration_type_name_ar` FROM `administration_type_tbl` WHERE `administration_type_id` = admin.`administration_type_id` )as type_ar, 
@@ -43,6 +63,7 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
                 admin.administration_active,admin.administration_name,admin.administration_telephone_number,admin.administration_telephone_number1,admin.administration_date_registeration
                 FROM  `administration_tbl` as admin  left JOIN `user_area_tbl` on admin.`administration_id` = `user_area_tbl`.`user_id` where admin.`administration_id` =  '$id' 
                 and admin.`administration_type_id` = 5 ";
+
     //  echo  $user_sql;
     // Change character set to utf8
     mysqli_set_charset($con, "utf8");
@@ -54,13 +75,28 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
 
       // echo $administration_id;
       $type = ($_SESSION['lang'] == "en") ? $arr['type_en'] : $arr['type_ar'];
+      // if ($arr['administration_active'] == 1) {
+      //   // $acive = $languages['driver']['active'];
+      //   $acive = "Active";
+      // } else if ($arr['administration_active'] == 2) {
+      //   // $acive = $languages['driver']['not_active'];
+      //   $acive = "Not active";
+      // } else if ($arr['administration_active'] == 3) {
+      //   // $acive = $languages['driver']['hold'];
+      //   $acive = "Hold";
+      // }
+        // echo $administration_id .'---'. $administration_active;
       if ($arr['administration_active'] == 1) {
-        $acive = $languages['driver']['active'];
+        // $acive = $languages['driver']['active'];
+        $acive = "Active";
       } else if ($arr['administration_active'] == 2) {
-        $acive = $languages['driver']['not_active'];
+        // $acive = $languages['driver']['not_active'];
+        $acive = "Not active";
       } else if ($arr['administration_active'] == 3) {
-        $acive = $languages['driver']['hold'];
+        // $acive = $languages['driver']['hold'];
+        $acive = "Hold";
       }
+
 
   ?>
 
@@ -83,10 +119,20 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
                   <tr><td style="widtd:30%">' . $languages['order']['tele'] . '</td><td>' . $arr['administration_telephone_number'] . '</td></tr>
                                 <tr><td style="widtd:30%">' . $languages['order']['telep1'] . '</td><td>' . $arr['administration_telephone_number1'] . '</td></tr>
                                 <tr><td style="widtd:30%">' . $languages['order']['registered'] . '</td><td>' . $arr['administration_date_registeration'] . '</td></tr>
-                                <tr><td style="widtd:30%">' . $languages['driver']['status'] . ' : </td><td>' . $acive . '</td></tr>
+                                <tr><td style="widtd:30%">' . $languages['driver']['status'] . ' : </td><td>' . $_GET['status'] . '</td></tr>
 
+                                
 
-      </tbody>
+                                <tr><td style="widtd:30%">' . $languages['search']['area'] . ' </td><td >' . $area_type . '</td></tr>
+                                <tr><td style="widtd:30%">' . $languages['order']['block'] . ' </td><td >' . $area['user_area_block'] . '</td></tr>
+                                <tr><td style="widtd:30%">' . $languages['order']['street'] . ' </td><td >' . $area['user_area_street'] . '</td></tr>
+                                <tr><td style="widtd:30%">' . $languages['order']['avenue'] . '</td><td >' . $area['user_area_avenue'] . '</td></tr>
+                                <tr><td style="widtd:30%">' . $languages['order']['house_no'] . ' </td><td >' . $area['user_area_house_num'] . '</td></tr>
+                                <tr><td  style="widtd:30%">' . $languages['order']['floor'] . '</td><td >' . $area['user_area_floor'] . '</td></tr>
+                                <tr><td  style="widtd:30%">' . $languages['order']['apart_num'] . '</td><td >' . $area['user_area_apartment_num'] . '</td></tr>
+                                <tr><td style="widtd:30%">' . $languages['order']['figure'] . ' </td><td >' . $area['user_area_automated_figure'] . '</td></tr>
+                                <tr><td  style="widtd:30%"> ' . $languages['order']['office_num'] . '</td><td >' . $arr['user_area_office_num'] . '</td></tr>
+</tbody>
     </table>
     </div>
   </div>
