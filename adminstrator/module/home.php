@@ -16,22 +16,27 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
   $title = $languages['menu_item']['month'];
 
   
-  $user_num_total      =  $statistics_cont->get_total_subscriber();
-  $user_num_total      = ($user_num_total > 0) ? $user_num_total : 0;
+  // $user_num_total      =  $statistics_cont->get_total_subscriber();
+  // $user_num_total      = ($user_num_total > 0) ? $user_num_total : 0;
 
-  $active_user_total   =  $statistics_cont->get_number_subscriber_where_id(1);
-  $active_user_total   = ($active_user_total > 0) ? $active_user_total : 0;
+  // $active_user_total   =  $statistics_cont->get_number_subscriber_where_id(1);
+  // $active_user_total   = ($active_user_total > 0) ? $active_user_total : 0;
 
-  $deactive_user_total =  $statistics_cont->get_number_subscriber_where_id(2);
-  $deactive_user_total = ($deactive_user_total > 0) ? $deactive_user_total : 0;
+  // $deactive_user_total =  $statistics_cont->get_number_subscriber_where_id(2);
+  // $deactive_user_total = ($deactive_user_total > 0) ? $deactive_user_total : 0;
 
-  $hold_user_total     =  $statistics_cont->get_number_subscriber_where_id(3);
-  $hold_user_total      = ($hold_user_total > 0) ? $hold_user_total : 0;
+  // $hold_user_total     =  $statistics_cont->get_number_subscriber_where_id(3);
+  // $hold_user_total      = ($hold_user_total > 0) ? $hold_user_total : 0;
 
 
   $website_num_user    =  $statistics_cont->get_num_user_website_app(1);
   $app_num_user        =  $statistics_cont->get_num_user_website_app(2);
 
+  $array_of_user       =   $statistics_cont->get_number_subscriber_where_id(1);
+  $user_num_total      = ($array_of_user[0] > 0) ? $array_of_user[0] : 0;
+  $active_user_total   = ($array_of_user[1] > 0) ? $array_of_user[1] : 0;
+  $hold_user_total      = ($array_of_user[2] > 0) ? $array_of_user[2] : 0;
+  $non_active_user_total   = ($array_of_user[1] > 0) ? $array_of_user[3] : 0;
 
 ?>
 
@@ -77,11 +82,12 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
       <div class="card-icon">
         <i class="material-icons">person_remove</i>
       </div>
-      <p class="card-category"><?php echo $languages['home']['hold_user']; ?></p>
-      <h3 class="card-title"><?php echo  $hold_user_total; ?></h3>
+      <p class="card-category"><?php echo $languages['home']['hold_user'] ?></p>
+      <h3 class="card-title"><?php echo  $hold_user_total ?></h3>
     </div>
     <div class="card-footer">
       <div class="stats">
+        Not-Active : <b> <?php echo $non_active_user_total ?></b>
       </div>
     </div>
   </div>
