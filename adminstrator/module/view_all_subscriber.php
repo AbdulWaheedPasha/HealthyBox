@@ -229,7 +229,10 @@ $all_num_rows = mysqli_num_rows($rs);
                     </thead>
                 <tbody>
                     <?php
-                    
+                    $hold = 0;
+                    $nonactive = 0;
+                    $active = 0;
+
                     while ($arr = mysqli_fetch_array($rs)) {
                    
                         
