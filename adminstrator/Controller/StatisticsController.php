@@ -112,10 +112,14 @@ class statistics_controller
             mysqli_set_charset($this->con, "utf8");
             $rs = mysqli_query($this->con, $user_sql);
             
-            $hold = -1;
-            $active = -1;
-            $nonactive = -1;
-            $totaluser = -1;
+            // $hold = -1;
+            // $active = -1;
+            // $nonactive = -1;
+            // $totaluser = -1;
+            $hold = 0;
+            $active = 0;
+            $nonactive = 0;
+            $totaluser = 0;
             while ($arr = mysqli_fetch_array($rs)) { 
                 $totaluser++;
 
