@@ -13,7 +13,7 @@ if ($_SESSION['role_id'] == "1" || $_SESSION['role_id'] == "2" ) {
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
 <script>
-
+  
     $(document).ready(function() {
         $(".btn-warning").click(function() {
             //alert("Clicked");
@@ -150,8 +150,8 @@ if ($_SESSION['role_id'] == "1" || $_SESSION['role_id'] == "2" ) {
 ?>
 
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+        <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css"></script>
         <script>
             // $(document).ready(function() {
@@ -229,17 +229,9 @@ $all_num_rows = mysqli_num_rows($rs);
                     </thead>
                 <tbody>
                     <?php
-                    $count = 0;
-                    $active = 0;
-                    $nonactive = 0;
-                    $Hold = 0;
-                    $nona = 0;
-                    $finalActive = 0;
+                    
                     while ($arr = mysqli_fetch_array($rs)) {
-                        
-                        // echo $arr['program_start_end'];
-                        // echo date("Y-m-d");
-
+                   
                         
                         // $type = ($_SESSION['lang'] == "en") ? $arr['type_en'] : $arr['type_ar'];
                         $active_str = "";
@@ -247,6 +239,7 @@ $all_num_rows = mysqli_num_rows($rs);
                         $acive = "";
                         $delete_str = "";
                         $diff =  0;
+                        $active_status = "";
                         if($arr['program_active'] != 3){
                         date_default_timezone_set('Asia/Kuwait');
                         $current_date = date('Y-m-d')." 00:00:00";
@@ -263,7 +256,8 @@ $all_num_rows = mysqli_num_rows($rs);
                               $diff =  ($day_row[0] > 0) ? $day_row[0] : 0;
                             }
                           }
-                        }else{
+                        }
+                        else{
                             $day_num_sql = "SELECT  `hold_date_num_days` FROM `hold_date_tbl` WHERE `user_area_id` =  $arr[user_area_id] ";
                             // echo   $day_num_sql;
                             if ($day_result = mysqli_query($con, $day_num_sql)) {
@@ -275,33 +269,8 @@ $all_num_rows = mysqli_num_rows($rs);
                               }
 
                         }
-                        $count++;
-                        //non hold value  
-                        if ($arr['program_active'] != 3){
-                            
-                            // 2021-9-18  <= 2021-9-20
-                            if (  date("Y-m-d") <= $arr['program_start_end']){
-                                // echo date("Y-m-d"). " p end date". $arr['program_start_end'];
-                                $active++;
-                            }
-                            else {
-                                $nonactive++;
-                            }
+                          
 
-                            if ($diff >= 1){
-                                $finalActive++;
-
-                            }
-                        }
-                        if ($arr['program_active'] == 3){
-                            $Hold++;
-                        }
-
-
-                        if ($arr['program_active'] == 2){
-                            $nona++;
-                        }
-                        
 
                         if ($arr['program_active'] == 1) {
                             $acive = $languages['driver']['active'];
@@ -336,6 +305,27 @@ $all_num_rows = mysqli_num_rows($rs);
                         }
 
 
+                        // ************** Active Status **************
+                        if ($arr['program_active'] == 3){
+                            // if hold 
+                            $hold++;
+                            $active_status = $languages['driver']['hold'];
+                        }
+                        else 
+                        { // not hold then check for active and non active 
+
+                            // Future date > current date 
+                            if (  $arr['program_start_end'] > date("Y-m-d")  ){
+                                $active++;
+                                $active_status = $languages['driver']['active'];
+                            }
+                            else {
+                                $nonactive++;
+                                $active_status = $languages['driver']['not_active'];
+                            }
+                        }
+                        // ************** Active Status **************
+
                    
                     
                     // Formulate the Difference between two dates 
@@ -344,7 +334,7 @@ $all_num_rows = mysqli_num_rows($rs);
                                 <td>' . $arr['administration_id'] . '</td>
                                 <td >' . $arr['administration_name'] . '</td>
                                 <td>' . $arr['administration_telephone_number'] . '</td>
-                                <td>' . $acive . '</td>
+                                <td>' . $active_status . '</td>
                                 <td>' . $arr['administration_date_registeration'] . '</td>
                                 <td>' . $arr['program_start_date'] . '</td>
                                 <td>' . $arr['program_start_end'] . '</td>
@@ -357,17 +347,13 @@ $all_num_rows = mysqli_num_rows($rs);
                             }
                        echo $active_str . $hold_str . $delete_str;
                         }
-                        echo '<a href="dashboard.php?type=user_detials&&id=' . base64_encode($arr['administration_id']) . '&&status=' . $acive . '" class="btn btn-info btn-round"> <i class="material-icons" style="margin: 0;">touch_app</i></a></td></tr>';
+                        echo '<a href="dashboard.php?type=user_detials&&id=' . base64_encode($arr['administration_id']) . '" class="btn btn-info btn-round"> <i class="material-icons" style="margin: 0;">touch_app</i></a></td></tr>';
                     }
-                
-                    // echo "Total user x:". $count . "Hold:". $Hold ." active: ". $active."nonactive :". $nonactive;
-                    // echo "nona active values". $nona;
-                    // echo "finalActive". $finalActive;
                     ?>
                 </tbody>
             </table>
 
-            
+
 
 
         </div>

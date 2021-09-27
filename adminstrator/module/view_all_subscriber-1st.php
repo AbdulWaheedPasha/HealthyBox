@@ -13,65 +13,8 @@ if ($_SESSION['role_id'] == "1" || $_SESSION['role_id'] == "2" ) {
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" crossorigin="anonymous"></script>
 <script>
-function active_helper(user_idx, user_area_idx, duration_dayx){
-
-            var para = {
-                user_id: user_idx,
-                user_area_id: user_area_idx,
-                duration_day: duration_dayx,
-            };
-            console.log("active_helper PARA Activate", para)
-            $.ajax({
-                        type: 'POST',
-                        url: './ajax/reactive_user_v2.php',
-                        data: para,
-                        success: function(data) {
-                            console.log("active_helper Success : ", data)
-
-
-                        }
-
-                    });
-
-
-}
-
-function hold_helper(admin_id, user_idx){
-
-        var para = {
-                    id: admin_id,
-                    user_id: user_idx,
-
-                };
-        console.log("Hold_helper PARA HOLD", para)
-        $.ajax({
-                    type: 'POST',
-                    url: './ajax/hold_user.php',
-                    data: para,
-                    success: function(data) {
-                        console.log("S:", data)
-                         //alert(data);
-                        // var jsonData = JSON.parse(data);
-                        // if (jsonData.result == "1") {
-                        //     Notify.suc({
-                        //         title: 'OK',
-                        //         text: jsonData.message,
-                        //     });
-
-                        //     setTimeout(function() {
-                        //         location.reload();
-                        //     }, 3000);
-                        // } else {
-                        //     Notify.suc(jsonData.message);
-                        // }
-
-                    }
-
-                });
-}
+  
     $(document).ready(function() {
-
-
         $(".btn-warning").click(function() {
             //alert("Clicked");
             var para = {
@@ -79,7 +22,6 @@ function hold_helper(admin_id, user_idx){
                 user_id: $(this).attr('data-val'),
 
             };
-            console.log("PARA HOLD", para)
             // console.log("here");
             Notify.confirm({
                 title: "<?php echo $languages['order']['hold_title']; ?>",
@@ -208,8 +150,8 @@ function hold_helper(admin_id, user_idx){
 ?>
 
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="http://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+        <script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css"></script>
         <script>
             // $(document).ready(function() {
@@ -287,18 +229,9 @@ $all_num_rows = mysqli_num_rows($rs);
                     </thead>
                 <tbody>
                     <?php
-                    $count = 0;
-                    $active = 0;
-                    $nonactive = 0;
-                    $Hold = 0;
-                    $nona = 0;
-                    $finalActive = 0;
-                    $t = 0;
+                    
                     while ($arr = mysqli_fetch_array($rs)) {
-                        
-                        // echo $arr['program_start_end'];
-                        // echo date("Y-m-d");
-
+                   
                         
                         // $type = ($_SESSION['lang'] == "en") ? $arr['type_en'] : $arr['type_ar'];
                         $active_str = "";
@@ -334,56 +267,18 @@ $all_num_rows = mysqli_num_rows($rs);
                               }
 
                         }
-                        $count++;
-                        //non hold value  
-                      
-                        if ($arr['program_active'] != 3){
-                            
-                
-                            // Future date >= current date 
-                            if (  $arr['program_start_end'] >= date("Y-m-d")  ){
-                                echo "<script> active_helper(".$arr['administration_id'].",". $arr['user_area_id'].",".$arr['program_duration'] . "); </script>";
-                                $active++;
-
-                                
-                            }
-                            else {
-                                $nonactive++;
-                            }
-
-                            if ($diff >= 1){
-                                $finalActive++;
-
-                            }
-                        }
-                        if ($arr['program_active'] == 3){
-                            $Hold++;
-                        }
-
-
-                        if ($arr['program_active'] == 2){
-                            $nona++;
-                        }
-
-                        // Testing for Active_helper 
-
-                        // Testing for Hold_helper 
-                      
-                    
-
+                          
 
 
                         if ($arr['program_active'] == 1) {
                             $acive = $languages['driver']['active'];
                             $hold_str = '<a  class="btn btn-warning btn-round"  data-val="' . base64_encode($arr['administration_id']) . '"  data-href="' . base64_encode(base64_encode(base64_encode($arr['user_area_id']))) . '" > <i class="material-icons" style="margin: 0;">pause</i></a>';
-                            // $hold_str = '<a  class="btn btn-warning btn-round"  data-val="' . $arr['administration_id'] . '"  data-href="' . $arr['user_area_id'] . '" > <i class="material-icons" style="margin: 0;">pause</i></a>';
-
                             $active_str = '<a class="btn btn-secondary btn-round" href="dashboard.php?type=renew_subscriber&&id=' . base64_encode($arr['user_area_id']) . '&&user_id=' . base64_encode($arr['administration_id']) . '&&delete_user=this" ><i class="material-icons" style="margin: 0;">autorenew</i></a>';
                             $delete_str = '<a href="#"  data-val="' . base64_encode($arr['administration_id']) . '" data-href="'.base64_encode(base64_encode(base64_encode($arr['user_area_id']))).'"  class="btn btn-danger btn-round"> <i class="material-icons" style="margin: 0;">delete</i></a>';
 
                         } else if ($arr['program_active'] == 2) {
                             $acive = $languages['driver']['not_active'];
-                            // $hold_str = '<a  class="btn btn-warning btn-round"  data-val="' . base64_encode($arr['administration_id']) . '"   data-href="' . base64_encode(base64_encode(base64_encode($arr['user_area_id']))) . '" > <i class="material-icons" style="margin: 0;">pause</i></a>';
+                           //  $hold_str = '<a  class="btn btn-warning btn-round"  data-val="' . base64_encode($arr['administration_id']) . '"   data-href="' . base64_encode(base64_encode(base64_encode($arr['user_area_id']))) . '" > <i class="material-icons" style="margin: 0;">pause</i></a>';
                             $active_str = '<a class="btn btn-secondary btn-round" href="dashboard.php?type=renew_subscriber&&id=' . base64_encode($arr['user_area_id']) . '&&user_id=' . base64_encode($arr['administration_id']) . '&&delete_user=this" ><i class="material-icons" style="margin: 0;">autorenew</i></a>';
 
                             $delete_str = '<a href="#"  data-val="'.base64_encode($arr['administration_id']).'" data-href="'.base64_encode(base64_encode(base64_encode($arr['user_area_id']))).'"  class="btn btn-danger btn-round"> <i class="material-icons" style="margin: 0;">delete</i></a>';
@@ -429,17 +324,13 @@ $all_num_rows = mysqli_num_rows($rs);
                             }
                        echo $active_str . $hold_str . $delete_str;
                         }
-                        echo '<a href="dashboard.php?type=user_detials&&id=' . base64_encode($arr['administration_id']) . '&&status=' . $acive . '" class="btn btn-info btn-round"> <i class="material-icons" style="margin: 0;">touch_app</i></a></td></tr>';
+                        echo '<a href="dashboard.php?type=user_detials&&id=' . base64_encode($arr['administration_id']) . '" class="btn btn-info btn-round"> <i class="material-icons" style="margin: 0;">touch_app</i></a></td></tr>';
                     }
-                
-                    echo "Total user x:". $count . "Hold:". $Hold ." active: ". $active."nonactive :". $nonactive;
-                    // echo "nona active values". $nona;
-                    // echo "finalActive". $finalActive;
                     ?>
                 </tbody>
             </table>
 
-            
+
 
 
         </div>
@@ -457,4 +348,3 @@ $all_num_rows = mysqli_num_rows($rs);
 
                 }
                 ?>
-

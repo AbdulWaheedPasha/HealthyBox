@@ -112,10 +112,10 @@ class statistics_controller
             mysqli_set_charset($this->con, "utf8");
             $rs = mysqli_query($this->con, $user_sql);
             
-            $hold = 0;
-            $active = 0;
-            $nonactive = 0;
-            $totaluser = 0;
+            $hold = -1;
+            $active = -1;
+            $nonactive = -1;
+            $totaluser = -1;
             while ($arr = mysqli_fetch_array($rs)) { 
                 $totaluser++;
 
@@ -126,7 +126,7 @@ class statistics_controller
                 // Skip hold values
                 if ($arr['program_active'] != 3){
                     // Future date >= current date 
-                    if (  $arr['program_start_end'] >= date("Y-m-d")  ){
+                    if (  $arr['program_start_end'] > date("Y-m-d")  ){
                         $active++;
                     }
                     else {
