@@ -138,7 +138,35 @@ class statistics_controller
                     }
                 }
             }
-        return  array($totaluser,$active,$hold,$nonactive);
+
+            $final_active = 0;
+            date_default_timezone_set('Asia/Kuwait');
+            $new_date = date('Y-m-d 00:00:00');
+            require_once("TodayOrderController.php");
+            require_once("./Model/ProgramModel.php");
+            include_once('./lang/' . $_SESSION['lang'] . '.php');
+            $date_model = new program_model();
+            $order_controller = new today_order_controller($this->con);
+            $pre_arr         =   $order_controller->select_pro();
+            // echo $pre_arr;
+            if(is_array($pre_arr)){
+            if(count($pre_arr) > 0){
+                for($i=0;$i<count($pre_arr);$i++){
+                    $date =  date("Y-m-d");
+                    // $count_num     =   $order_controller->get_num_order_where_area_id($pre_arr[$i]['capital_id'],$date);
+                    $pre_str       = ($_SESSION['lang'] == "en") ? $pre_arr[$i]['capital_en_title'] : $pre_arr[$i]['capital_ar_title'];
+                    $counter_order = $order_controller->get_num_order_where_area_id($new_date,$pre_arr[$i]['capital_id']); 
+                    $capital_id = base64_encode($pre_arr[$i]['capital_id']);
+                    
+                    $final_active += (int)$counter_order['counter'];
+                    }
+                
+                }
+            }
+
+        $nonactive = $totaluser - ($final_active + $hold);
+
+        return  array($totaluser,$final_active,$hold,$nonactive);
 
     
 
