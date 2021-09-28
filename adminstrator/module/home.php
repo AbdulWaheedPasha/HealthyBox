@@ -29,8 +29,9 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
   // $hold_user_total      = ($hold_user_total > 0) ? $hold_user_total : 0;
 
 
-  // $website_num_user    =  $statistics_cont->get_num_user_website_app(1);
-  // $app_num_user        =  $statistics_cont->get_num_user_website_app(2);
+  $website_num_user    =  $statistics_cont->get_num_user_website_app(1);
+  $app_num_user        =  $statistics_cont->get_num_user_website_app(2);
+
 
   $array_of_user       =   $statistics_cont->get_number_subscriber_where_id(1);
   $user_num_total      = ($array_of_user[0] > 0) ? $array_of_user[0] : 0;
@@ -38,7 +39,7 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
   $hold_user_total      = ($array_of_user[2] > 0) ? $array_of_user[2] : 0;
   $non_active_user_total   = ($array_of_user[1] > 0) ? $array_of_user[3] : 0;
 
-  $website_num_user  = $user_num_total
+
 ?>
 
 
