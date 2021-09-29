@@ -130,7 +130,7 @@ class statistics_controller
                 // Skip hold values
                 if ($arr['program_active'] != 3){
                     // Future date >= current date 
-                    if (  $arr['program_start_end'] > date("Y-m-d")  ){
+                    if (  $arr['program_start_end'] >= date("Y-m-d")  ){
                         $active++;
                     }
                     else {
