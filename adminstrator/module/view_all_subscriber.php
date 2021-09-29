@@ -318,7 +318,7 @@ $all_num_rows = mysqli_num_rows($rs);
                         { // not hold then check for active and non active 
 
                             // Future date > current date 
-                            if (  $arr['program_start_end'] > date("Y-m-d")  ){
+                            if (  $arr['program_start_end'] >= date("Y-m-d")  ){
                                 $active++;
                                 $active_status = $languages['driver']['active'];
                             }
