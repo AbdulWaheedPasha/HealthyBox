@@ -55,11 +55,25 @@ $(document).ready(function(){
             dataType: "json",
             // data:{user_id:user_id},
             success:function(data){
+
+              console.log("T 1");
+              var jsonData = JSON.parse(JSON.stringify(data));
+              console.log("T 2");
               console.log("SUCCESSS - data ", data);
-              document.getElementById("totaluser").innerHTML = data['totaluser'];
-              document.getElementById("nonactive").innerHTML = data['nonactive'];
-              document.getElementById("active").innerHTML = data['active'];
-              document.getElementById("hold").innerHTML = data['hold'];
+              console.log("T 3", data.totaluser);
+   
+              document.getElementById("totaluser").innerHTML = jsonData.totaluser;
+              document.getElementById("nonactive").innerHTML = jsonData.nonactive;
+              document.getElementById("active").innerHTML = jsonData.active;
+              document.getElementById("hold").innerHTML = jsonData.hold;
+
+
+
+              // console.log("SUCCESSS - data ", data);
+              // document.getElementById("totaluser").innerHTML = data['totaluser'];
+              // document.getElementById("nonactive").innerHTML = data['nonactive'];
+              // document.getElementById("active").innerHTML = data['active'];
+              // document.getElementById("hold").innerHTML = data['hold'];
    
             },
             error:function(x,e) {

@@ -78,6 +78,15 @@ if(is_array($pre_arr)){
 
 $nonactive = $totaluser - ($final_active + $hold);
 
+
+
+
+// $data->status = 'ok';
+// $data->totaluser = $totaluser;
+// $data->nonactive = $nonactive;
+// $data->active = $final_active;
+// $data->hold = $hold;
+
 $data['status'] = 'ok';
 $data['totaluser'] = $totaluser;
 $data['nonactive'] = $nonactive;
@@ -85,7 +94,7 @@ $data['active'] = $final_active;
 $data['hold'] = $hold;
 
 echo json_encode($data);
-
+exit;
 // it will take 53 sec to return data.
 
 //     $totaluser = 100;
