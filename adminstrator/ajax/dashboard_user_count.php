@@ -94,7 +94,7 @@ $data['active'] = $final_active;
 $data['hold'] = $hold;
 
 // $data = array($totaluser,$active,$hold,$nonactive);
-
+// $data->result = 'x';
 echo json_encode($data);
 exit;
 // it will take 53 sec to return data.
