@@ -1,8 +1,11 @@
 <?php
 
 require_once('../Configuration/db.php');
-
-
+$hold = 0;
+$active = 0;
+$nonactive = 0;
+$totaluser = 0;
+$final_active = 0;
 
 $user_sql  = "SELECT *, (SELECT  `program_duration`  FROM `program_tbl` WHERE `program_id` = `user_area_tbl`.`program_id` )  as  program_duration
                     FROM
@@ -24,10 +27,7 @@ $user_sql  = "SELECT *, (SELECT  `program_duration`  FROM `program_tbl` WHERE `p
             mysqli_set_charset($con, "utf8");
             $rs = mysqli_query($con, $user_sql);
             
-            $hold = 0;
-            $active = 0;
-            $nonactive = 0;
-            $totaluser = 0;
+
             while ($arr = mysqli_fetch_array($rs)) { 
                 $totaluser++;
 
@@ -49,7 +49,7 @@ $user_sql  = "SELECT *, (SELECT  `program_duration`  FROM `program_tbl` WHERE `p
 
 
 
-$final_active = 0;
+
 date_default_timezone_set('Asia/Kuwait');
 $new_date = date('Y-m-d 00:00:00');
 require_once("../controller/TodayOrderController.php");
