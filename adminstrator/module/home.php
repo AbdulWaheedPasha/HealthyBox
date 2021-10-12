@@ -60,7 +60,7 @@ $(document).ready(function(){
               var jsonData = JSON.parse(JSON.stringify(data));
               console.log("T 2");
               console.log("SUCCESSS - data ", data);
-              console.log("T 3", data.totaluser);
+              console.log("T 3", data[1]);
    
               document.getElementById("totaluser").innerHTML = jsonData.totaluser;
               document.getElementById("nonactive").innerHTML = jsonData.nonactive;
