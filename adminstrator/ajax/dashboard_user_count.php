@@ -52,7 +52,7 @@ $user_sql  = "SELECT *, (SELECT  `program_duration`  FROM `program_tbl` WHERE `p
 
 date_default_timezone_set('Asia/Kuwait');
 $new_date = date('Y-m-d 00:00:00');
-require_once("../controller/TodayOrderController.php");
+require_once("../Controller/TodayOrderController.php");
 require_once("../Model/ProgramModel.php");
 include_once('../lang/' . $_SESSION['lang'] . '.php');
 
