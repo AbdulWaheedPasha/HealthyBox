@@ -91,53 +91,52 @@ class statistics_controller
     public function get_number_subscriber_where_id($id)
     {   
 
+        $hold = 0;
+        $active = 0;
+        $nonactive = 0;
+        $totaluser = 0;
+
          
-            $user_sql  = "SELECT *, (SELECT  `program_duration`  FROM `program_tbl` WHERE `program_id` = `user_area_tbl`.`program_id` )  as  program_duration
-                    FROM
-                    `user_area_tbl`
-                    INNER JOIN `administration_tbl` AS admin
-                    ON
-                    `user_area_tbl`.`user_id` = `admin`.`administration_id`
-                    INNER JOIN  `program_start_end_date_tbl`
-                    ON
-                    `program_start_end_date_tbl`.`user_area_id`  = `user_area_tbl`.`user_area_id`
+            // $user_sql  = "SELECT *, (SELECT  `program_duration`  FROM `program_tbl` WHERE `program_id` = `user_area_tbl`.`program_id` )  as  program_duration
+            //         FROM
+            //         `user_area_tbl`
+            //         INNER JOIN `administration_tbl` AS admin
+            //         ON
+            //         `user_area_tbl`.`user_id` = `admin`.`administration_id`
+            //         INNER JOIN  `program_start_end_date_tbl`
+            //         ON
+            //         `program_start_end_date_tbl`.`user_area_id`  = `user_area_tbl`.`user_area_id`
                     
-                    WHERE
-                    `admin`.`administration_type_id` = 5 AND `user_area_tbl`.`user_area_id` =(
-                    SELECT
-                        MAX(`user_area_id`)
-                    FROM `user_area_tbl` WHERE `user_id` = `admin`.`administration_id` )";
+            //         WHERE
+            //         `admin`.`administration_type_id` = 5 AND `user_area_tbl`.`user_area_id` =(
+            //         SELECT
+            //             MAX(`user_area_id`)
+            //         FROM `user_area_tbl` WHERE `user_id` = `admin`.`administration_id` )";
         
     
-            mysqli_set_charset($this->con, "utf8");
-            $rs = mysqli_query($this->con, $user_sql);
+            // mysqli_set_charset($this->con, "utf8");
+            // $rs = mysqli_query($this->con, $user_sql);
             
-            // $hold = -1;
-            // $active = -1;
-            // $nonactive = -1;
-            // $totaluser = -1;
-            $hold = 0;
-            $active = 0;
-            $nonactive = 0;
-            $totaluser = 0;
-            while ($arr = mysqli_fetch_array($rs)) { 
-                $totaluser++;
 
-                if ($arr['program_active'] == 3){
-                    $hold++;
-                }
 
-                // Skip hold values
-                if ($arr['program_active'] != 3){
-                    // Future date >= current date 
-                    if (  $arr['program_start_end'] >= date("Y-m-d")  ){
-                        $active++;
-                    }
-                    else {
-                        $nonactive++;
-                    }
-                }
-            }
+            // while ($arr = mysqli_fetch_array($rs)) { 
+            //     $totaluser++;
+
+            //     if ($arr['program_active'] == 3){
+            //         $hold++;
+            //     }
+
+            //     // Skip hold values
+            //     if ($arr['program_active'] != 3){
+            //         // Future date >= current date 
+            //         if (  $arr['program_start_end'] >= date("Y-m-d")  ){
+            //             $active++;
+            //         }
+            //         else {
+            //             $nonactive++;
+            //         }
+            //     }
+            // }
 
             // $final_active = 0;
             // date_default_timezone_set('Asia/Kuwait');

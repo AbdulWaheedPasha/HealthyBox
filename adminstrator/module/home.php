@@ -42,6 +42,31 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
 
 ?>
 
+<script>
+
+    
+$(document).ready(function(){
+
+  console.log("document - ready ");
+
+  $.ajax({
+            type:'GET',
+            url:'./ajax/dashboard_user_count.php',
+            dataType: "json",
+            // data:{user_id:user_id},
+            success:function(data){
+              console.log("SUCCESSS - data ", data);
+              document.getElementById("totaluser").innerHTML = data['totaluser'];
+              document.getElementById("nonactive").innerHTML = data['nonactive'];
+              document.getElementById("active").innerHTML = data['active'];
+              document.getElementById("hold").innerHTML = data['hold'];
+
+   
+            }
+        });
+
+});
+</script>
 
 
 
@@ -50,13 +75,16 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
   <div class="card card-stats">
     <div class="card-header card-header-success card-header-icon">
       <div class="card-icon">
-        <i class="material-icons">person</i>
+        <i class="material-icons">person_add</i>
       </div>
       <p class="card-category"><?php echo $languages['home']['active_user']; ?></p>
-      <h3 class="card-title"><?php echo    $active_user_total; ?></h3>
+      <h3 class="card-title" id="active">
+          <div class="fa-3x"> <i class="fas fa-spinner fa-pulse"></i></div>
+      </h3>
     </div>
     <div class="card-footer">
       <div class="stats">
+      Active Users 
       </div>
     </div>
   </div>
@@ -68,10 +96,16 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
         <i class="material-icons">emoji_people</i>
       </div>
       <p class="card-category"><?php echo $languages['home']['all']; ?></p>
-      <h3 class="card-title"><?php echo   $user_num_total; ?></h3>
+    
+      <h3 class="card-title" id="totaluser">
+          <div class="fa-3x"> <i class="fas fa-spinner fa-pulse"></i></div>
+      </h3>
+
     </div>
     <div class="card-footer">
       <div class="stats">
+      Web App : <b id="" style="color:black;"> <?php echo  $website_num_user["counter"]; ?> </b>&nbsp;&nbsp;
+      Mobile App : <b id="" style="color:black;"> <?php echo  $app_num_user["counter"]; ?> </b>
 
       </div>
     </div>
@@ -85,32 +119,45 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
         <i class="material-icons">person_remove</i>
       </div>
       <p class="card-category"><?php echo $languages['home']['hold_user'] ?></p>
-      <h3 class="card-title"><?php echo  $hold_user_total ?></h3>
+
+
+      <h3 class="card-title" id="hold">
+          <div class="fa-3x"> <i class="fas fa-spinner fa-pulse"></i></div>
+      </h3>
+
     </div>
     <div class="card-footer">
       <div class="stats">
-        Not-Active : <b> <?php echo $non_active_user_total ?></b>
+        Hold Users
       </div>
     </div>
   </div>
 </div>
+
+
 <div class="col-lg-3 col-md-6 col-sm-6">
   <div class="card card-stats">
     <div class="card-header card-header-info card-header-icon">
       <div class="card-icon">
-        <i class="material-icons">person_add</i>
-
+        <i class="material-icons">person</i>
       </div>
-      <p class="card-category"><?php echo $languages['home']['deactive_user']; ?></p>
-      <h6 class="card-title">Website : <?php echo  $website_num_user["counter"]; ?></h6>
-      <h6 class="card-title">App : <?php echo  $app_num_user["counter"]; ?></h6>
+      <p class="card-category">Not Active</p>
+
+      <h3 class="card-title" id="nonactive">
+          <div class="fa-3x"> <i class="fas fa-spinner fa-pulse"></i></div>
+      </h3>
+
     </div>
     <div class="card-footer">
       <div class="stats">
+        Not Active Users
       </div>
     </div>
   </div>
 </div>
+
+
+
 
 <div class="col-md-12">
             <div class="card ">
@@ -152,7 +199,9 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
             </div>
           </div>
 
-       
+          <script>
+    // document.getElementById("test").innerHTML= "123";
+    </script>
 
   <?php
   }
