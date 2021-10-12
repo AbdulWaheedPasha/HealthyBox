@@ -57,15 +57,15 @@ $(document).ready(function(){
             success:function(data){
 
               console.log("T 1");
-              var jsonData = JSON.parse(JSON.stringify(data));
+              // var jsonData = JSON.parse(JSON.stringify(data));
               console.log("T 2");
               console.log("SUCCESSS - data ", data);
-              console.log("T 3", data[1]);
+              console.log("T 3 user :", data.totaluser);
    
-              document.getElementById("totaluser").innerHTML = jsonData.totaluser;
-              document.getElementById("nonactive").innerHTML = jsonData.nonactive;
-              document.getElementById("active").innerHTML = jsonData.active;
-              document.getElementById("hold").innerHTML = jsonData.hold;
+              // document.getElementById("totaluser").innerHTML = jsonData.totaluser;
+              // document.getElementById("nonactive").innerHTML = jsonData.nonactive;
+              // document.getElementById("active").innerHTML = jsonData.active;
+              // document.getElementById("hold").innerHTML = jsonData.hold;
 
 
 
