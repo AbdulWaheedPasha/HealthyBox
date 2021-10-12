@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once('../Configuration/db.php');
 $hold = 0;
 $active = 0;
