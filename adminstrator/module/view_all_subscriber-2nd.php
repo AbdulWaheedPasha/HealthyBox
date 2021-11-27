@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
 if ($_SESSION['role_id'] == "1" || $_SESSION['role_id'] == "2" ) {
 ?>
@@ -242,32 +238,7 @@ $all_num_rows = mysqli_num_rows($rs);
 
                     while ($arr = mysqli_fetch_array($rs)) {
                 
-                        require_once("./Controller/ProgramController.php");
-                        require_once("./Model/ProgramModel.php");
-                        include_once('./lang/' . $_SESSION['lang'] . '.php');
-                        $date_model = new program_model();
-                        $controller = new program_controller($date_model, $con);
-                        $controller->user_id =   $arr['administration_id'];
-                        $fetch_program = $controller->get_all_program();
-
                         
-    # Get the Address START 
-    require_once './Configuration/db.php';
-    include_once('./lang/' . $_SESSION['lang'] . '.php');
-    require_once("./Controller/DayController.php");
-    require_once("./Model/AddressModel.php");
-    $address_model1 = new address_model();
-    $controller2      = new day_controller($address_model1, $con);
-    $user_area_id = "";
-    if (count($fetch_program) > 0) {
-      $user_area_id =  $fetch_program[0]['user_area_id'];
-    }
-    $area            = $controller2->get_address_where_program_id($user_area_id);
-    $area_type            = ($_SESSION['lang'] == "en") ? $area['area_name_eng'] : $area['area_name_ar'];
-    $area_place_name      = ($_SESSION['lang'] == "en") ? $area['place_type_eng'] : $area['place_type_ar'];
-    # Get the Address  END 
-
-
                         // $type = ($_SESSION['lang'] == "en") ? $arr['type_en'] : $arr['type_ar'];
                         $active_str = "";
                         $hold_str  = "";
@@ -370,7 +341,7 @@ $all_num_rows = mysqli_num_rows($rs);
                                 <td >' . $arr['administration_name'] . '</td>
                                 <td>' . $arr['administration_telephone_number'] . '</td>
                                 <td>' . $active_status . '</td>
-                                <td>' . $area_type . '</td>
+                                <td>' . $arr['administration_date_registeration'] . '</td>
                                 <td>' . $arr['program_start_date'] . '</td>
                                 <td>' . $arr['program_start_end'] . '</td>
                                 <td>' . $diff . '</td>';
