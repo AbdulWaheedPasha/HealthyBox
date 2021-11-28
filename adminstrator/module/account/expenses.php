@@ -118,7 +118,7 @@ if(isset($_GET['delete']) && isset($_GET['id'])){
             
                             <th>'.$languages['program']['title'].'</th>
                             <th>'.$languages['program']['cost'].'</th>
-                            <th>'.$languages['program']['date'].'</th>';
+                            <th> Date  </th>';
                 
                             if ($_SESSION['role_id'] == "1" || $_SESSION['role_id'] == "3") {
                                 $table = $table  . '<th> '.$languages['area']['process'].'</th>';
