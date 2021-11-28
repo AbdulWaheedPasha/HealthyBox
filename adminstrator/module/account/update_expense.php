@@ -1,10 +1,10 @@
 <!-- create_new_subscriber -->
 <?php
-session_start();
-error_reporting(0);
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
-error_reporting(E_ALL);
-error_reporting(E_ALL & ~E_NOTICE);
+// session_start();
+// error_reporting(0);
+// error_reporting(E_ERROR | E_WARNING | E_PARSE);
+// error_reporting(E_ALL);
+// error_reporting(E_ALL & ~E_NOTICE);
 
 if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
     $id  = base64_decode($_GET['id']);
