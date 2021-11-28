@@ -23,8 +23,8 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
     <form action="./post/update_expenses.php" method="post" enctype="multipart/form-data" name="form" id="form">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title"><?php echo $languages['sub']['update_exp']; ?></h4>
-                <h6 class="card-title"><?php echo $languages['sub']['describe_update']; ?></h6>
+                <h4 class="card-title"><?php echo $languages['program']['update_exp']; ?></h4>
+                <h6 class="card-title"><?php echo $languages['program']['describe_update']; ?></h6>
             </div>
             <div class="card-body">
                 <div class="form-group" id="Result"></div>
