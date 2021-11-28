@@ -3,7 +3,7 @@
 if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
 ?>
 
-  
+
 <div class="col">
    <a href="dashboard.php?type=add_new_expen" class="btn btn-primary btn-round"><?php  echo $languages['program']['add_exp'];?><div class="ripple-container"></div></a>
    
@@ -120,7 +120,7 @@ if(isset($_GET['delete']) && isset($_GET['id'])){
                             <th>'.$languages['program']['cost'].'</th>
                             <th>'.$languages['program']['date'].'</th>';
                 
-                            if ($_SESSION['role_id'] == "1") {
+                            if ($_SESSION['role_id'] == "1" || $_SESSION['role_id'] == "3") {
                                 $table = $table  . '<th> '.$languages['area']['process'].'</th>';
                               }
                               $table = $table .'</thead>';
@@ -187,9 +187,11 @@ if(isset($_GET['delete']) && isset($_GET['id'])){
                               <td  valign="center">'.$arr['expenses_detials_name'].'</td>
                               <td  valign="center">'.$arr['expenses_detials_cost'].'</td>
                               <td  valign="center">'.$arr['expenses_detials_date'].'</td>';
-                       if ($_SESSION['role_id'] == "1") {
-                        $table = $table.' <td  valign="center"><a href="dashboard.php?type=update_expense&&id=' . base64_encode($arr['expenses_detials_id']) . '" class="btn btn-success btn-fab"> <i class="material-icons" style="margin: 0;">edit</i></a> 
-                                       <a href="dashboard.php?type=expenses&&id=' . base64_encode($arr['expenses_detials_id']) . '&&delete=' . base64_encode("Delete") . '" class="btn btn-danger btn-fab"> <i class="material-icons" style="margin: 0;">delete</i></a> </td> ';
+                       if ($_SESSION['role_id'] == "1" || $_SESSION['role_id'] == "3") {
+                        $table = $table.'<td  valign="center">
+                                <a href="dashboard.php?type=update_expense&&id=' . base64_encode($arr['expenses_detials_id']) . '" class="btn btn-success btn-fab"> <i class="material-icons" style="margin: 0;">edit</i></a> 
+                                <a href="dashboard.php?type=expenses&&id=' . base64_encode($arr['expenses_detials_id']) . '&&delete=' . base64_encode("Delete") . '" class="btn btn-danger btn-fab"> <i class="material-icons" style="margin: 0;">delete</i></a> 
+                                </td> ';
                                         
                                               }
 

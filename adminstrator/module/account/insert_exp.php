@@ -30,6 +30,11 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
                 </div>
 
 
+                <div class="form-group">
+                    <label><?php echo "Date and Time" ?></label>
+                    <input class="form-control"  type="datetime-local" id="expenses_detials_date" name="expenses_detials_date">
+                </div>
+
 
   <script>
          $("#product_price").on("keypress keyup blur", function (event) {

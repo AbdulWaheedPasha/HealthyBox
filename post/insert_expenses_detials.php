@@ -17,7 +17,8 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
         mysqli_set_charset($con,"utf8");
         
         $date = new DateTime("now", new DateTimeZone('Asia/Kuwait') );
-        $time =  $date->format('Y-m-d H:i:s');
+        // $time =  $date->format('Y-m-d H:i:s');
+        $time =  "27 Nov 2021"
         $query = "INSERT INTO `expenses_detials_tbl`(`expenses_detials_cost`, `expenses_detials_date`,`expenses_detials_name`) VALUE ('$product_price','$time','$type_expenses')";
          echo $query;
         $rs 	= mysqli_query($con, $query);
