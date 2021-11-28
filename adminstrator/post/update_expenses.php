@@ -13,12 +13,14 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
         $product_price     = $_POST['product_price'];
         $expenses_detials_id  = $_POST['expenses_detials_id'];
         $type_expenses     = $_POST['type_expenses'];
+        $expenses_detials_date = $_POST["expenses_detials_date"];
 
         mysqli_set_charset($con,"utf8");
         
-        $date = new DateTime("now", new DateTimeZone('Asia/Kuwait') );
-        $time =  $date->format('Y-m-d H:i:s');
-        $query = " UPDATE `expenses_detials_tbl` SET `expenses_detials_name` = '$type_expenses',`expenses_detials_cost` = '$product_price' WHERE `expenses_detials_id` = '$expenses_detials_id' ";
+        // $date = new DateTime("now", new DateTimeZone('Asia/Kuwait') );
+        // $time =  $date->format('Y-m-d H:i:s');
+
+        $query = " UPDATE `expenses_detials_tbl` SET `expenses_detials_name` = '$type_expenses',`expenses_detials_cost` = '$product_price',`expenses_detials_date` = '$expenses_detials_date'  WHERE `expenses_detials_id` = '$expenses_detials_id' ";
   
         //  echo $query;
         $rs 	= mysqli_query($con, $query);
