@@ -186,7 +186,7 @@ if(isset($_GET['delete']) && isset($_GET['id'])){
                         $table = $table. '<tr>
                               <td  valign="center">'.$arr['expenses_detials_name'].'</td>
                               <td  valign="center">'.$arr['expenses_detials_cost'].'</td>
-                              <td  valign="center">'.$arr['expenses_detials_date'].'</td>';
+                              <td  valign="center"> '. date('d-M-Y', strtotime($arr['expenses_detials_date'])) .'</td>';
                        if ($_SESSION['role_id'] == "1" || $_SESSION['role_id'] == "3") {
                         $table = $table.'<td  valign="center">
                                 <a href="dashboard.php?type=update_expense&&id=' . base64_encode($arr['expenses_detials_id']) . '" class="btn btn-success btn-fab"> <i class="material-icons" style="margin: 0;">edit</i></a> 

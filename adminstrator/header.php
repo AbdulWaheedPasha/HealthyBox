@@ -35,6 +35,9 @@
     <link rel="stylesheet" href="easySelectStyle/easySelectStyle.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="easySelectStyle/easySelect.js"></script>
+
+    
+
     <script>
         function showAddresssDetials(str, lang) {
             if (str.length == 0) {
@@ -78,6 +81,9 @@
 
 
     <script src="https://cdn.datatables.net/1.10.19/css/dataTables.jqueryui.min.css"></script>
+
+    
+
     <script>
         $(document).ready(function() {
             $('#example').DataTable();

@@ -45,7 +45,7 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
 
                 <div class="form-group">
                     <label><?php echo "Date and Time" ?></label>
-                    <input class="form-control"  type="datetime-local" id="expenses_detials_date" name="expenses_detials_date" value="<?php echo strftime('%Y-%m-%dT%H:%M:%S', strtotime($arr['expenses_detials_date'])) ?>">
+                    <input class="form-control"  type="date" id="expenses_detials_date" name="expenses_detials_date" value="<?php echo strftime('%Y-%m-%d', strtotime($arr['expenses_detials_date'])) ?>">
                 </div>
 
 

@@ -20,10 +20,6 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
 
                 <div class="form-group"></div>
 
-
-
-
-
                 <div class="form-group">
                     <label><?php echo $languages['program']['cost']; ?></label>
                     <input  class="form-control" name="product_price" type="textfield" id="product_price" >
@@ -32,7 +28,8 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
 
                 <div class="form-group">
                     <label><?php echo "Date and Time" ?></label>
-                    <input class="form-control"  type="datetime-local" id="expenses_detials_date" name="expenses_detials_date">
+                    <!-- <input class="form-control"  type="text"  id="expenses_detials_date" name="expenses_detials_date"/> -->
+                    <input class="form-control"  type="date" id="expenses_detials_date" name="expenses_detials_date">
                 </div>
 
 
@@ -60,6 +57,7 @@ if (isset($_SESSION['user_name']) || isset($_SESSION['password'])) {
         $("#form").on("submit", function(e) {
             var postData = $(this).serializeArray();
             var formURL = $(this).attr("action");
+            console.log(postData);
             $.ajax({
                 url: formURL,
                 type: "POST",
